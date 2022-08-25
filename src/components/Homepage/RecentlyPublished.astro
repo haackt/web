@@ -1,25 +1,32 @@
 ---
 const posts = await Astro.glob("../../pages/posts/*.mdx");
-posts.map((post) => {
-  console.log(post.frontmatter);
-});
 ---
 
 <section class="not-prose">
   {
-    posts.slice(0, 16).map((post) => (
-      <article>
-        <div class="flex flex-row items-end justify-between mb-1">
-          <h3 class="font-semibold text-slate-800">{post.frontmatter.title}</h3>
-          <time class="text-sm">{post.frontmatter.readingTime}</time>
-        </div>
-        <p class="text-transparent bg-clip-text line-clamp-3 bg-gradient-to-br from-neutral-700 via-neutral-700 to-neutral-500">
-          {post.frontmatter.lineClamp}
-        </p>
-        <a href={post.url} class="font-medium text-slate-800">
-          Read more
-        </a>
-      </article>
-    ))
+    posts
+      .sort((firstPost, secondPost) => {
+        return (
+          new Date(secondPost.frontmatter.date).getTime() -
+          new Date(firstPost.frontmatter.date).getTime()
+        );
+      })
+      .slice(0, 16)
+      .map((post) => (
+        <article>
+          <div class="flex flex-row items-end justify-between mb-1">
+            <h3 class="font-semibold text-slate-800">
+              {post.frontmatter.title}
+            </h3>
+            <time class="text-sm">{post.frontmatter.readingTime}</time>
+          </div>
+          <p class="text-transparent bg-clip-text line-clamp-3 bg-gradient-to-br from-neutral-700 via-neutral-700 to-neutral-500">
+            {post.frontmatter.lineClamp}
+          </p>
+          <a href={post.url} class="font-medium text-slate-800">
+            Read more
+          </a>
+        </article>
+      ))
   }
 </section>
