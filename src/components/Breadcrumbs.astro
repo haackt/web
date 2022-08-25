@@ -1,0 +1,38 @@
+---
+import title from "title";
+import { Icon } from "astro-icon";
+
+const paths = Astro.url.pathname.split("/").filter((x) => x);
+const parts = [];
+
+paths.forEach((path, i) => {
+  const href = `/${paths.slice(0, i + 1).join("/")}`;
+  parts.push({
+    label: title(path.replace(/[-_]/g, " ")),
+    href,
+  });
+});
+---
+
+<nav aria-label="Breadcrumb">
+  <ol role="list" class="flex items-center child:pr-2 text-neutral-900">
+    <li class="inline" role="listitem">
+      <a href="/" class="">
+        <Icon name="heroicons-solid:home" size={20} />
+      </a>
+    </li>
+    {
+      parts.map(({ label, href }) => (
+        <li class="inline before:content-['_›']" role="listitem">
+          <a href={href}>
+            {label == "Home" ? (
+              <Icon name="heroicons-solid:home" size={20} />
+            ) : (
+              label
+            )}
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>

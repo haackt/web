@@ -1,0 +1,19 @@
+---
+import Base from "./Base.astro";
+
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+
+const { content } = Astro.props;
+---
+
+<Base>
+  <div class="mt-2 mb-5 not-prose">
+    <Breadcrumbs />
+  </div>
+  <header class="not-prose">
+    <h1 class="text-4xl font-bold text-neutral-800">{content.title}</h1>
+  </header>
+  <main>
+    <slot />
+  </main>
+</Base>

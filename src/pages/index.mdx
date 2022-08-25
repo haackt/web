@@ -1,0 +1,38 @@
+---
+layout: "@layouts/Base.astro"
+---
+
+import { Icon } from "astro-icon";
+
+import TwitterButton from "@components/Homepage/Buttons/Twitter.astro";
+import GitHubButton from "@components/Homepage/Buttons/GitHub.astro";
+
+import RecentlyPublished from "@components/Homepage/RecentlyPublished.astro";
+
+<section class="flex flex-col items-baseline justify-between mt-4 sm:flex-row gap-x-2">
+
+# Torben Haack
+
+<div class="flex flex-row not-prose gap-x-2">
+
+<TwitterButton />
+<GitHubButton />
+
+</div>
+
+</section>
+
+Hey, I'm a software developer based in Berlin, Germany.
+I love fiddling around with code and building things.
+
+## Recently Published
+
+<RecentlyPublished />
+
+---
+
+[View all Posts](/posts)
+
+---
+
+&copy; 2022 Torben Haack
