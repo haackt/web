@@ -8,7 +8,7 @@ interface Post {
   url: string;
 }
 
-const posts = await Astro.glob("../pages/posts/*.mdx");
+const posts = await Astro.glob("../pages/posts/**/*.mdx");
 const years = {} as Years;
 
 posts.map((post) => {
