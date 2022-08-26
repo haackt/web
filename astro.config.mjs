@@ -11,6 +11,7 @@ import remarkLineClamp from "./src/remark/remark-line-clamp.mjs";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://haackt.com/",
   integrations: [
     mdx({
       remarkPlugins: [
