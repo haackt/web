@@ -1,6 +1,15 @@
 ---
+interface Years {
+  [year: number]: Post[];
+}
+interface Post {
+  title: string;
+  date: Date;
+  url: string;
+}
+
 const posts = await Astro.glob("../pages/posts/*.mdx");
-const years = {};
+const years = {} as Years;
 
 posts.map((post) => {
   const date = new Date(post.frontmatter.date);
@@ -20,12 +29,15 @@ posts.map((post) => {
   {
     Object.entries(years).map((year) => {
       return (
-        <div class="flex flex-row gap-x-32">
+        <div class="flex flex-row gap-x-32 border-y">
           <h2 class="w-24">{year[0]}</h2>
           <div class="flex flex-col text-left w-full hover:text-neutral-800">
-            {year[1].map((post) => {
+            {year[1].map((post: Post) => {
               return (
-                <a href={post.url} class="flex py-1 w-full justify-between">
+                <a
+                  href={post.url}
+                  class="flex py-1 w-full justify-between border-b"
+                >
                   <h3>{post.title}</h3>
                   <time>{post.date.toLocaleString()}</time>
                 </a>
