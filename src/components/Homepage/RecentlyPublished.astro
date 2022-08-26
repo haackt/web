@@ -1,5 +1,7 @@
 ---
-const posts = await Astro.glob("../../pages/posts/**/*.mdx");
+const posts = (await Astro.glob("../../pages/posts/**/*.mdx")).filter(
+  (post) => !post.frontmatter.draft
+);
 ---
 
 <section class="not-prose">
