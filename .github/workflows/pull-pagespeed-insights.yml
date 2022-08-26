@@ -1,3 +1,0 @@
-name: Page Speed Insights
-on: [push, pull_request]
-uses: JakePartusch/psi-action@v1.2
