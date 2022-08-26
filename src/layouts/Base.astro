@@ -21,11 +21,7 @@ const { title, description } = Astro.props as Props;
       description={description ? description : config.site.description}
     />
   </head>
-  <body
-    class="p-4 prose prose-headings:text-lg prose-headings:font-medium bg-neutral-50 md:mx-auto"
-  >
-    <div class="mt-4 md:mt-16 lg:mt-24">
-      <slot />
-    </div>
+  <body class="bg-neutral-50">
+    <slot />
   </body>
 </html>
