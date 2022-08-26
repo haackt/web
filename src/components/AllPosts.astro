@@ -20,32 +20,42 @@ posts.map((post) => {
 });
 
 /**
- * TODO: fix typescript error
  * TODO: make year unchanged by hover selector
  */
 ---
 
-<section class="not-prose flex-col hover:text-neutral-500/50">
+<section
+  class="not-prose flex-col hover:text-neutral-500/50 transition-all ease-in-out duration-200"
+>
   {
-    Object.entries(years).map((year) => {
-      return (
-        <div class="flex flex-row gap-x-32 border-y">
-          <h2 class="w-24">{year[0]}</h2>
-          <div class="flex flex-col text-left w-full hover:text-neutral-800">
-            {year[1].map((post: Post) => {
-              return (
-                <a
-                  href={post.url}
-                  class="flex py-1 w-full justify-between border-b"
-                >
-                  <h3>{post.title}</h3>
-                  <time>{post.date.toLocaleString()}</time>
-                </a>
-              );
-            })}
+    Object.entries(years)
+      .reverse()
+      .map((year) => {
+        return (
+          <div class="flex group flex-row border-b first:border-t py-2 border-neutral-300">
+            <h2 class="w-1/2 group-hover:text-neutral-800 text-sm text-neutral-500">
+              {year[0]}
+            </h2>
+            <div class="flex flex-col text-left w-full">
+              {year[1].map((post: Post) => {
+                return (
+                  <a
+                    href={post.url}
+                    class="flex py-2 w-full justify-between border-b border-neutral-300 last:border-none hover:text-neutral-800"
+                  >
+                    <h3>{post.title}</h3>
+                    <time>
+                      {new Intl.DateTimeFormat("en-GB", {
+                        day: "2-digit",
+                        month: "2-digit",
+                      }).format(post.date)}
+                    </time>
+                  </a>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      );
-    })
+        );
+      })
   }
 </section>
