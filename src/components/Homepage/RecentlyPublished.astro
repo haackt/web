@@ -1,5 +1,5 @@
 ---
-const posts = await Astro.glob("../../pages/posts/*.mdx");
+const posts = await Astro.glob("../../pages/posts/**/*.mdx");
 ---
 
 <section class="not-prose">
@@ -21,7 +21,7 @@ const posts = await Astro.glob("../../pages/posts/*.mdx");
             <time class="text-sm">{post.frontmatter.readingTime}</time>
           </div>
           <p class="text-transparent bg-clip-text line-clamp-3 bg-gradient-to-br from-neutral-700 via-neutral-700 to-neutral-500">
-            {post.frontmatter.lineClamp}
+            {post.frontmatter.description}
           </p>
           <a href={post.url} class="font-medium text-slate-800">
             Read more
