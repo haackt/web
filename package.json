@@ -13,6 +13,7 @@
     "@astrojs/mdx": "^0.10.1",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
+    "@astrojs/vercel": "^1.0.1",
     "@tailwindcss/typography": "^0.5.4",
     "@types/title": "^3.4.1",
     "astro": "^1.0.8",
