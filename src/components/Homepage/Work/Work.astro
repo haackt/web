@@ -1,11 +1,15 @@
 ---
 import WarpCompanion from "./WarpCompanion.astro";
 import WarpThemes from "./WarpThemes.astro";
+import HeroiconsRaycast from "./HeroiconsRaycast.astro";
 ---
 
-<section
-  class="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row not-prose"
->
-  <WarpThemes />
-  <WarpCompanion />
+<section class="not-prose space-y-4">
+  <div class="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row">
+    <WarpThemes />
+    <WarpCompanion />
+  </div>
+  <div class="flex flex-col space-y-4 sm:space-y-0 sm:space-x-4 sm:flex-row">
+    <HeroiconsRaycast />
+  </div>
 </section>
